@@ -50,7 +50,7 @@ jobs:
 
       - name: Replace image tag in manifests
         run: |
-          sed -i "s|harsha12101503/wisecow:latest|${{ env.IMAGE }}:${{ github.sha }}|g" k8s/deployment.yml
+          sed -i "s|harsha12101503/wisecow:latest|${{ env.IMAGE }}:${{ github.sha }}|g" k8s/deplyoment.yml
 
       - name: Apply Kubernetes manifests
         run: |
