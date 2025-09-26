@@ -52,7 +52,7 @@ jobs:
       - name: Replace image tag in manifests
         shell: powershell
         run: |
-          (Get-Content k8s/deployment.yml) -replace 'harsha12101503/wisecow:latest', "${{ env.IMAGE }}:${{ github.sha }}" | Set-Content k8s/deployment.yml
+          (Get-Content k8s/deplyoment.yml) -replace 'harsha12101503/wisecow:latest', "${{ env.IMAGE }}:${{ github.sha }}" | Set-Content k8s/deplyoment.yml
 
       - name: Apply Kubernetes manifests
         run: |
