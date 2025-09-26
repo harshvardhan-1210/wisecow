@@ -55,7 +55,8 @@ jobs:
           (Get-Content k8s/deplyoment.yml) -replace 'harsha12101503/wisecow:latest', "${{ env.IMAGE }}:${{ github.sha }}" | Set-Content k8s/deplyoment.yml
 
       - name: Apply Kubernetes manifests
+        shell: powershell
         run: |
-          export KUBECONFIG=$PWD/kubeconfig
+          $env:KUBECONFIG="$PWD/kubeconfig"
           kubectl apply -f k8s/
           kubectl rollout status deployment/wisecow
