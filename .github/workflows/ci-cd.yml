@@ -53,6 +53,12 @@ jobs:
         shell: powershell
         run: |
           (Get-Content k8s/deplyoment.yml) -replace 'harsha12101503/wisecow:latest', "${{ env.IMAGE }}:${{ github.sha }}" | Set-Content k8s/deplyoment.yml
+      - name: Ensure Minikube context
+        shell: powershell
+        run: |
+          minikube update-context
+          kubectl config use-context minikube
+          kubectl get nodes
 
       - name: Apply Kubernetes manifests
         shell: powershell
