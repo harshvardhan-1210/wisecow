@@ -50,8 +50,9 @@ jobs:
          Set-Content -Path "$env:USERPROFILE\.kube\config" -Value $decoded
  
       - name: Replace image tag in manifests
+        shell: powershell
         run: |
-          sed -i "s|harsha12101503/wisecow:latest|${{ env.IMAGE }}:${{ github.sha }}|g" k8s/deplyoment.yml
+          (Get-Content k8s/deployment.yml) -replace 'harsha12101503/wisecow:latest', "${{ env.IMAGE }}:${{ github.sha }}" | Set-Content k8s/deployment.yml
 
       - name: Apply Kubernetes manifests
         run: |
