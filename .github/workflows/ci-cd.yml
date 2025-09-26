@@ -44,7 +44,7 @@ jobs:
           version: v1.29.0
 
       - name: Set up kubeconfig
-        shell: pwsh
+        shell: powershell
         run: |
          $decoded = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("${{ secrets.KUBECONFIG_DATA }}"))
          -Content -Path "$env:USERPROFILE\.kube\config" -Value $decoded
