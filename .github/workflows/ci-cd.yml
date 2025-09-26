@@ -47,7 +47,7 @@ jobs:
         shell: powershell
         run: |
          $decoded = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("${{ secrets.KUBECONFIG_DATA }}"))
-         -Content -Path "$env:USERPROFILE\.kube\config" -Value $decoded
+         Set-Content -Path "$env:USERPROFILE\.kube\config" -Value $decoded
  
       - name: Replace image tag in manifests
         run: |
